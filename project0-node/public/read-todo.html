@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Read Todo</title>
+  </head>
+  <body>
+    <h1>Todo List (Fetched from /todo)</h1>
+
+    <ul id="todoList"></ul>
+
+    <p><a href="/index">Back to Index</a></p>
+
+    <script>
+      fetch("/todo")
+        .then((res) => res.json())
+        .then((data) => {
+          const list = document.getElementById("todoList");
+
+          data.forEach((todo) => {
+            const li = document.createElement("li");
+            li.textContent = `${todo.id}. ${todo.title} — completed: ${todo.completed}`;
+            list.appendChild(li);
+          });
+        })
+        .catch((err) => {
+          console.error(err);
+          document.body.insertAdjacentHTML(
+            "beforeend",
+            "<p style='color:red;'>Failed to load /todo</p>"
+          );
+        });
+    </script>
+  </body>
+</html>
