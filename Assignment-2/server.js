@@ -1,24 +1,24 @@
-// Assignment-2/server.js
 import express from "express";
 import dotenv from "dotenv";
 import { MongoClient } from "mongodb";
 
+//load env vars
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// --- MongoDB setup ---
+// --- MongoDB setup here ---
 const uri = process.env.MONGO_URI;
 if (!process.env.MONGO_URI) {
   console.error("Missing MONGO_URI in .env");
   process.exit(1);
 }
 
-
+//creat Mongo client
 const client = new MongoClient(uri);
 
-
+//DB
 const DB_NAME = "todo_app";
 const COLLECTION_NAME = "todos";
 
@@ -36,6 +36,7 @@ app.get("/todo", async (req, res) => {
   }
 });
 
+// --- Landing page ---
 app.get("/index", (req, res) => {
   res.setHeader("Content-Type", "text/html");
   res.send(`
@@ -50,8 +51,8 @@ app.get("/index", (req, res) => {
 
         <h2>Three things I like</h2>
         <ol>
-          <li>Coding</li>
-          <li>Gaming</li>
+          <li>Skateboarding</li>
+          <li>Reading</li>
           <li>Music</li>
         </ol>
 
@@ -119,7 +120,7 @@ app.get("/read-todo", (req, res) => {
   `);
 });
 
-// Extra credit (optional): GET /todo/:id
+// Extra credit
 app.get("/todo/:id", async (req, res) => {
   try {
     const id = Number(req.params.id);
@@ -135,12 +136,12 @@ app.get("/todo/:id", async (req, res) => {
   }
 });
 
-// Default route / redirect behavior (must be LAST)
+// Default route / redirect behavior 
 app.use((req, res) => {
   res.redirect(301, "/index");
 });
 
-// --- Start server after DB connects ---
+// --- Lets start the server after DB connects ---
 async function start() {
   try {
     await client.connect();
