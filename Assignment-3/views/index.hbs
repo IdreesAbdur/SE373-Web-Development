@@ -1,0 +1,41 @@
+<h1>Employee Management</h1>
+
+<form method="POST" action="/employees/create" class="form">
+  <div class="grid">
+    <label>
+      First Name
+      <input name="firstName" type="text" required />
+    </label>
+
+    <label>
+      Last Name
+      <input name="lastName" type="text" required />
+    </label>
+
+    <label>
+      Department
+      <select name="department" required>
+        {{#each departments}}
+          <option value="{{this}}">{{this}}</option>
+        {{/each}}
+      </select>
+    </label>
+
+    <label>
+      Start Date
+      <input name="startDate" type="date" required />
+    </label>
+
+    <label>
+      Job Title
+      <input name="jobTitle" type="text" required />
+    </label>
+
+    <label>
+      Salary
+      <input name="salary" type="number" min="0" step="1" required />
+    </label>
+  </div>
+
+  <button type="submit" class="btn">Add Employee</button>
+</form>

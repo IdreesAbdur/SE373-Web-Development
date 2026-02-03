@@ -1,0 +1,39 @@
+<h1>Employees</h1>
+
+{{#if employees.length}}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Start Date</th>
+        <th>Job Title</th>
+        <th>Salary</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each employees}}
+        <tr>
+          <td>{{firstName}} {{lastName}}</td>
+          <td>{{department}}</td>
+          <td>{{formatDate startDate}}</td>
+
+
+          <td>{{jobTitle}}</td>
+          <td>{{salary}}</td>
+          <td class="actions">
+            <a class="btn-small" href="/employees/{{_id}}/edit">Update</a>
+
+            <form method="POST" action="/employees/{{_id}}/delete" style="display:inline;">
+              <button class="btn-small danger" type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p>My man theres No employees yet. Add one from the Add Employee page first then double back.</p>
+{{/if}}

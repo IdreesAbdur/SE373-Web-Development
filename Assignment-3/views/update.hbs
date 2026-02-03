@@ -1,0 +1,41 @@
+<h1>Update Employee</h1>
+
+<form method="POST" action="/employees/{{employee._id}}/update" class="form">
+  <div class="grid">
+    <label>
+      First Name
+      <input name="firstName" type="text" value="{{employee.firstName}}" required />
+    </label>
+
+    <label>
+      Last Name
+      <input name="lastName" type="text" value="{{employee.lastName}}" required />
+    </label>
+
+    <label>
+      Department
+      <select name="department" required>
+        {{#each departments}}
+          <option value="{{this}}">{{this}}</option>
+        {{/each}}
+      </select>
+    </label>
+
+    <label>
+      Start Date
+      <input name="startDate" type="date" value="{{employee.startDate}}" required />
+    </label>
+
+    <label>
+      Job Title
+      <input name="jobTitle" type="text" value="{{employee.jobTitle}}" required />
+    </label>
+
+    <label>
+      Salary
+      <input name="salary" type="number" min="0" step="1" value="{{employee.salary}}" required />
+    </label>
+  </div>
+
+  <button type="submit" class="btn">Save Changes</button>
+</form>
