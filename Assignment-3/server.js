@@ -6,7 +6,7 @@ import passport from "passport";
 import flash from "connect-flash";
 import { engine } from "express-handlebars";
 
-import "./config/passport.js"; // passport strategy
+import "./config/passport.js";
 import authRoutes from "./routes/authRoutes.js";
 import employeeRoutes from "./routes/employeeRoutes.js";
 
@@ -14,7 +14,6 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Running on ${PORT}`)); 
 
 // body parsing
 app.use(express.urlencoded({ extended: true }));
@@ -52,22 +51,20 @@ app.engine(
   })
 );
 
-
 app.set("view engine", "hbs");
 app.set("views", "./views");
-
 
 // routes
 app.use("/", authRoutes);
 app.use("/", employeeRoutes);
 
-// db + server
+// db + server (ONLY listen once)
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB connected");
-    app.listen(PORT, () =>
-      console.log(`Server running http://localhost:${PORT}`)
-    );
+    app.listen(PORT, () => console.log(`Running on ${PORT}`));
   })
-  .catch(console.error);
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+  });
