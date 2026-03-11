@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  h1 {
+    margin-top: 0;
+  }
+  
+  .row {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  
+  input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 10px 16px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .chat {
+    height: 420px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    overflow-y: auto;
+    background: #fff;
+  }
+  
+  .msg {
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+  }
+  
+  .msg.user {
+    background: #f9fbff;
+  }
+  
+  .msg.bot {
+    background: #fff7f0;
+  }
+  
+  .meta {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-bottom: 6px;
+  }
+  
+  .text {
+    white-space: pre-wrap;
+  }
+  
+  .typing {
+    font-size: 13px;
+    opacity: 0.75;
+    margin: 6px 0;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .hint {
+    margin-top: 10px;
+    font-size: 13px;
+    opacity: 0.75;
+  }

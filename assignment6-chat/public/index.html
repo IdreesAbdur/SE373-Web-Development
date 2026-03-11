@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 6 Chat</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>WebSocket Chat</h1>
+
+      <div class="row">
+        <input id="name" placeholder="Your name" autocomplete="off" />
+      </div>
+
+      <div id="chat" class="chat"></div>
+
+      <div id="typing" class="typing hidden">ChatBot is typing...</div>
+
+      <form id="form" class="row">
+        <input
+          id="message"
+          placeholder="Type a message... use @bot to talk to the AI"
+          autocomplete="off"
+        />
+        <button type="submit">Send</button>
+      </form>
+
+      <div class="hint">
+        Try: <code>@bot explain websockets in 1 sentence</code>
+      </div>
+    </div>
+
+    <!-- Socket.IO client library served automatically by server -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/client.js"></script>
+  </body>
+</html>
